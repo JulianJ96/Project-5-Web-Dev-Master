@@ -1,4 +1,4 @@
-
+console.log('Here is the product page!')
 
 const apiUrl = "http://localhost:3000/api/products";
 
@@ -24,8 +24,6 @@ const getProduct = async () => {
         console.log(jsonResponse)
         
         // display product inside html with the fetched data
-         productImage.innerHTML += `
-            <img src="${jsonResponse.imageUrl}" alt="${jsonResponse.altText}">`;
             description.innerHTML += `${jsonResponse.description}`;
             title.innerHTML += `${jsonResponse.name}`;
             price.innerHTML += `${jsonResponse.price}`; 
@@ -33,12 +31,12 @@ const getProduct = async () => {
             <option value="">--Please, select a color --</option>
             ${jsonResponse.colors.map(color => {
                 return `<option value="${color}"> ${color}</option>`;
-            })
-                }`;  
-         
+                })
+            }`;
+            productImage.innerHTML += `<img src="${jsonResponse.imageUrl}" alt="${jsonResponse.altText}">`; 
         setItems(jsonResponse);
 
-    } catch (error) {
+    } catch(error){
         console.log(error)
     }
 };
