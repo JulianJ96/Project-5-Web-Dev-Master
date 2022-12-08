@@ -12,7 +12,9 @@ const totalPrice = document.getElementById('totalPrice');
 // get items from local storage
 const getCartItems = () => {
     for (const [key, value] of  Object.entries(localStorage)) {
-        cartItems.push(JSON.parse(value))
+        console.log(key, value);
+        console.log(JSON.parse(value));
+        cartItems.push(JSON.parse(value));
     }
     console.log(cartItems);
 
@@ -96,9 +98,7 @@ totalQuantity();
 
 //calculate total price and display it inside html
 
-const totalAmount = cartTotalPrice.reduce((prev, current) => {
-    return prev + current;
-})
+const totalAmount = cartTotalPrice.reduce((prev, current) => prev + current, 0);
 
 totalPrice.innerHTML = totalAmount;
 
@@ -151,7 +151,7 @@ const emailErrorMsg = document.getElementById('emailErrorMsg');
 // checking valid email address
 const validateEmail = (mail) => {
     const re = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
-    if (re.test(String(mail).toLoacaleLowerCase())) {
+    if (re.test(String(mail).toLocaleLowerCase())) {
         return true;
     } else{
         return false;

@@ -61,6 +61,7 @@ const setItems = (product) => {
             }  
 
             const itemKey = `${product._id}, ${colors.value}`;
+            console.log(itemKey, cartObject);
             window.localStorage.setItem(itemKey, JSON.stringify(cartObject));
         }   
         
