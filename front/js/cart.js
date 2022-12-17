@@ -96,9 +96,25 @@ const totalQuantity = () => {
 
 totalQuantity();
 
+// calculate total price
+
+const calculateTotalPrice = () => {
+    for (let item of cartItems) {
+        let price = parseInt(item.price);
+        let itemQty = parseInt(item.qty);
+
+        const tPrice = price * itemQty;
+        cartTotalPrice.push(tPrice);
+    }
+}
+
+calculateTotalPrice();
+
 //calculate total price and display it inside html
 
-const totalAmount = cartTotalPrice.reduce((prev, current) => prev + current, 0);
+const totalAmount = cartTotalPrice.reduce((prev, current) => {
+    return prev + current;
+})
 
 totalPrice.innerHTML = totalAmount;
 
@@ -109,6 +125,7 @@ const newQtys = document.querySelectorAll('.itemQuantity');
 newQtys.forEach(element => {
     element.addEventListener('change', (event) => {
         event.preventDefault();
+        
 
 
     let currentId = event.target.id
